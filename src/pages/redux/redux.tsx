@@ -27,14 +27,14 @@ const userSlice = createSlice({
         updateUserDetails: (state: User, action: PayloadAction<Partial<User>>) => {
             return { ...state, ...action.payload }
         },
-        resetuser: () => {
+        resetUser: () => {
             return InitialState
         }
     }
 })
 
 
-export const { createUserDetails, updateUserDetails } = userSlice.actions
+export const { createUserDetails, updateUserDetails,resetUser } = userSlice.actions
 
 export const selectedUserDetails = (state: RootState) => state.user;
 
