@@ -11,6 +11,7 @@ import { routerMenus } from "./routes/router.menus";
 
 const DashBoard = lazy(() => import("./pages/Dashboard/dashboard"));
 const ReduxUsage = lazy(() => import("./pages/redux/reduxUsage"))
+const ZodForm = lazy(() => import("./pages/forms/zod-register-form"))
 const routes: RouteObject[] = [
   { path: "/", element: <Navigate to={routerMenus.dashboard.path} /> },
   {
@@ -21,6 +22,11 @@ const routes: RouteObject[] = [
   {
     path: routerMenus.redux_usage.path,
     element: <ReduxUsage />,
+    errorElement: <ErrorBoundry />
+  },
+  {
+    path: routerMenus.zod_form.path,
+    element: <ZodForm />,
     errorElement: <ErrorBoundry />
   },
 ];
