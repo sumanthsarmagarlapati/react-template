@@ -1,4 +1,4 @@
-import axios, { type AxiosResponse } from "axios";
+import axios from "axios";
 
 const env = import.meta.env;
 export async function getData(params: any) {
@@ -6,16 +6,14 @@ export async function getData(params: any) {
 }
 
 
-export async function getUserDetails(): Promise<AxiosResponse<any>> {
+export async function getUserDetails() {
   return {
     data: {
-      name: "Sumanth Sarma Garlapati",
+      name: "Sumanth Sarma Garlapati January",
       age: 25,
     },
     status: 201,
-    statusText: "Success",
-    headers: {},
-    config: {},
+    message: "Success",
   }
   // return await axios.get(`${env.VITE_SERVER}/userDetails`)
 }
