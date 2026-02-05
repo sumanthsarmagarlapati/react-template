@@ -13,7 +13,7 @@ const DashBoard = lazy(() => import("./pages/Dashboard/dashboard"));
 const ReduxUsage = lazy(() => import("./pages/redux/reduxUsage"))
 const ZodForm = lazy(() => import("./pages/forms/zod-register-form"))
 const AsyncThunkReduxUsage = lazy(() => import("./pages/AsyncThunkRedux/async-thunk-redux-usage"))
-const ReactReducer = lazy(() => import("./pages/Reducer/reducer"))
+const  ReactReducer = lazy(() => import("./pages/Reducer/reducer"))
 const Table = lazy(() => import("./pages/Table/table"))
 
 const routes: RouteObject[] = [
