@@ -24,5 +24,8 @@ export const routerMenus={
     table:{
         path:"/table",
         url:"/table"
+    },
+    insert:{
     }
+        
 }
