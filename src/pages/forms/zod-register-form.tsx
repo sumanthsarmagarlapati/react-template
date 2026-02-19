@@ -3,6 +3,10 @@ import { Button } from 'primereact/button';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { getUserDetails, userForm, type userFormInterface } from './zod-form';
 
+// Dependecies
+//   "react-hook-form":"7.68.0"
+//   "@hookfrom/resolver":"5.2.2"
+//   "zod":"4.2.1"
 
 export default function ZodForm() {
     const {

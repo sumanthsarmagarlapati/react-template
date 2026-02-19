@@ -1,0 +1,19 @@
+.modal-overlay {
+  position: fixed;         /* Keeps overlay in place even if the user scrolls */
+  top: 0;
+  left: 0;
+  height: 100vh;           /* Viewport height: ensures full vertical coverage */
+  width: 100vw;            /* Viewport width: ensures full horizontal coverage */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for the "dimmed" effect */
+  display: flex;           /* Flexbox: the modern standard for centering children */
+  justify-content: center; /* Centers modal-box horizontally */
+  align-items: center;     /* Centers modal-box vertically */
+}
+
+.modal-box {
+  background-color: white;
+  padding: 20px;
+  width: 320px;            /* Fixed width provides a consistent UI look */
+  border-radius: 8px;      /* Standard modern "soft" corner aesthetics */
+  text-align: center;
+}
