@@ -28,6 +28,19 @@ export const routerMenus={
     model:{
         path:"/model",
         url:"/model"
+    },
+    use_memo:{
+        path:"/use-memo",
+        url:"/use-memo"
+     },
+     use_callback:{
+        path:"/use-callback",
+        url:"/use-callback"
+     
+    },
+    debounce:{  
+        path:"/debounce",
+        url:"/debounce"
     }
         
 }

@@ -21,6 +21,9 @@ const AsyncThunkReduxUsage = lazy(
 const ReactReducer = lazy(() => import("./pages/Reducer/reducer"));
 const Table = lazy(() => import("./pages/Table/table"));
 const Model = lazy(() => import("./pages/Model/model"));
+const UseMemo = lazy(() => import("./pages/useMemo/useMemo"));
+const UsecallBack = lazy(() => import("./pages/useMemo/useCallback"));
+const Bounce = lazy(() => import("./pages/Debounce/debounce"));
 
 const routes: RouteObject[] = [
   { path: "/", element: <Navigate to={routerMenus.dashboard.path} /> },
@@ -56,6 +59,21 @@ const routes: RouteObject[] = [
   {
     path: routerMenus.model.path,
     element: <Model />,
+    errorElement: <ErrorBoundry />,
+  },
+  {
+    path: routerMenus.use_memo.path,
+    element: <UseMemo />,
+    errorElement: <ErrorBoundry />,
+  },
+  {
+    path: routerMenus.use_callback.path,
+    element: <UsecallBack />,
+    errorElement: <ErrorBoundry />,
+  },
+  {
+    path: routerMenus.debounce.path,
+    element: <Bounce />,
     errorElement: <ErrorBoundry />,
   },
 ];
