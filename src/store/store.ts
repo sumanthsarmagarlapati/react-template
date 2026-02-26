@@ -2,6 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import UserAsyncSlice, { AsyncThunkRedux } from "../pages/AsyncThunkRedux/async-thunk-redux";
 import UserSlice from '../pages/redux/redux';
 
+// Dependecies
+// "@reduxjs/toolkit": "^2.9.0",  // further redux usage
 
 export const store = configureStore({
   reducer: {

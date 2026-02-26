@@ -25,7 +25,22 @@ export const routerMenus={
         path:"/table",
         url:"/table"
     },
-    insert:{
+    model:{
+        path:"/model",
+        url:"/model"
+    },
+    use_memo:{
+        path:"/use-memo",
+        url:"/use-memo"
+     },
+     use_callback:{
+        path:"/use-callback",
+        url:"/use-callback"
+     
+    },
+    debounce:{  
+        path:"/debounce",
+        url:"/debounce"
     }
         
 }

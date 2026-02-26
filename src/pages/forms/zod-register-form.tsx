@@ -1,75 +1,131 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from 'primereact/button';
-import { useFieldArray, useForm } from 'react-hook-form';
-import { getUserDetails, userForm, type userFormInterface } from './zod-form';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "primereact/button";
+import { useFieldArray, useForm } from "react-hook-form";
+import { getUserDetails, userForm, type userFormInterface } from "./zod-form";
 
+// Dependecies
+//   "react-hook-form":"7.68.0"
+//   "@hookfrom/resolver":"5.2.2"
+//   "zod":"4.2.1"
 
 export default function ZodForm() {
-    const {
-        register,
-        handleSubmit,
-        control,
-        formState: { errors },
-        reset
-    } = useForm<userFormInterface>({
-        resolver: zodResolver(userForm),
-        defaultValues: getUserDetails()
-    })
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+  } = useForm<userFormInterface>({
+    resolver: zodResolver(userForm),
+    defaultValues: getUserDetails(),
+  });
 
-    const { fields: Skills, append, remove } = useFieldArray({
-        control,
-        name: "skills"
-    })
+  const {
+    fields: Skills,
+    append,
+    remove,
+    insert,
+  } = useFieldArray({
+    control,
+    name: "skills",
+  });
 
-    const onSubmit = (data: userFormInterface) => {
-        console.log('data', data)
+  const onSubmit = (data: userFormInterface) => {
+    console.log("data", data);
+  };
 
-    }
-
-    return (
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* {Name} */}
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/* {Name} */}
-                <div >
-                    <input type='text' {...register("name")} placeholder='Enter name' />
-                    {errors?.name ? <p>{errors?.name?.message}</p> : ""}
-                </div>
-                {/* {Email} */}
-                <div>
-                    <input type="email" placeholder='ENter Email' {...register("email")} />
-                    {errors?.email ? <p>{errors?.email?.message}</p> : ""}
-                </div>
-
-                {/* {Skills} */}
-                <div>
-                    {Skills.length ? Skills.map((field: Record<string, any>, index: number) => (
-                        <>
-                            <div key={field.id}>
-                                <div>
-                                    <input type='text' placeholder='Enter Skill name' {...register(`skills.${index}.name`)} />
-                                    {errors?.skills?.[index]?.name ? <p>{errors?.skills?.[index]?.name?.message}</p> : ""}
-                                </div>
-                                <div>
-                                    <input type='number' min={1} step={1} placeholder='Enter Level' {...register(`skills.${index}.level`)} />
-
-                                    {errors?.skills?.[index]?.level ? <p>{errors?.skills?.[index]?.level?.message}</p> : ""}
-
-                                </div>
-                            </div>
-                            <div>
-                                <Button type='button' onClick={() => remove(index)}>Remove</Button>
-                            </div>
-                        </>
-                    )) : ""}
-                </div>
-                <div>
-                    <Button type='button' onClick={() => append({ name: "", level: 0 })}>Add</Button>
-                </div>
-
-                <Button type="submit" >Submit</Button>
-                <Button type="button" onClick={() => reset()} >Reset</Button>
-
-            </form>
+          <input type="text" {...register("name")} placeholder="Enter name" />
+          {errors?.name ? <p>{errors?.name?.message}</p> : ""}
         </div>
-    )
+        {/* {Email} */}
+        <div>
+          <input
+            type="email"
+            placeholder="ENter Email"
+            {...register("email")}
+          />
+          {errors?.email ? <p>{errors?.email?.message}</p> : ""}
+        </div>
+
+        <div>
+          <input
+            type="text"
+            placeholder="EEnter Address"
+            {...register("address")}
+          />
+          {errors?.address ? <p>{errors?.address?.message}</p> : ""}
+        </div>
+
+        {/* {Skills} */}
+        <div>
+          {Skills.length
+            ? Skills.map((field: Record<string, any>, index: number) => (
+                <>
+                  <div key={field.id}>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Enter Skill name"
+                        {...register(`skills.${index}.name`)}
+                      />
+                      {errors?.skills?.[index]?.name ? (
+                        <p>{errors?.skills?.[index]?.name?.message}</p>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div>
+                      <input
+                        type="number"
+                        min={1}
+                        step={1}
+                        placeholder="Enter Level"
+                        {...register(`skills.${index}.level`)}
+                      />
+
+                      {errors?.skills?.[index]?.level ? (
+                        <p>{errors?.skills?.[index]?.level?.message}</p>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <Button type="button" onClick={() => remove(index)}>
+                      Remove
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      type="button"
+                      onClick={() => append({ name: "", level: 0 })}
+                    >
+                      Add
+                    </Button>
+                    {/* Inserts a new skill at index + 1 */}
+                    {/* <Button
+                      type="button"
+                      onClick={() => insert(index + 1, { name: "", level: 0 })}
+                      className="p-button-secondary"
+                    >
+                      Insert Below
+                    </Button> */}
+                  </div>
+                </>
+              ))
+            : ""}
+        </div>
+
+        <Button type="submit">Submit</Button>
+        <Button type="button" onClick={() => reset()}>
+          Reset
+        </Button>
+      </form>
+    </div>
+  );
 }

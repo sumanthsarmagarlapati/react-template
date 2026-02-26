@@ -13,6 +13,9 @@ const InitialState = {
     }
 }
 
+// Redux Thunk is used to handle asynchronous logic (like API calls) that cannot be done inside a standard Reducer.
+// In Redux, Reducers must be "pure"—they only take state and an action and return a new state immediately. They cannot wait for a database or a server response.
+// Thunk acts as a middleman that allows you to write functions that wait for data before dispatching a real action.
 export const AsyncThunkRedux = createAsyncThunk("userAsync/loadUserAsyncDetails", async () => {
     try {
         const response = await getUserDetails()
